@@ -1,0 +1,9 @@
+* {
+  margin: 0;
+}
+
+.get-started-page {
+  background-image: url("./assets/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
