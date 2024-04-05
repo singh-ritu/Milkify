@@ -10,10 +10,18 @@ function Navbar() {
           Milkify
         </Typography>
         <div className="nav-btns">
-          <Button variant="text">Milk Shop</Button>
-          <Button variant="text">Inspiration</Button>
-          <Button variant="text">MAbout Milkify</Button>
-          <Button variant="text">Contact</Button>
+          <Button variant="text" style={{ color: "white" }}>
+            Milk Shop
+          </Button>
+          <Button variant="text" style={{ color: "white" }}>
+            Inspiration
+          </Button>
+          <Button variant="text" style={{ color: "white" }}>
+            MAbout Milkify
+          </Button>
+          <Button variant="text" style={{ color: "white" }}>
+            Contact
+          </Button>
         </div>
       </div>
     </>

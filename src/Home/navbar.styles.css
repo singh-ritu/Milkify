@@ -1,11 +1,16 @@
 .navbar {
+  width: 100%;
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(30px);
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 10px;
   margin: 0;
+  position: fixed;
+}
+.nav-btns {
+  padding: 0 16px;
 }

@@ -1,11 +1,17 @@
 import bg from "./.././assets/bg.jpg";
 import "./Home.style.css";
+import Navbar from "./Navbar";
+import Inspiraton from "./Inspiraton";
+import ContactUs from "./ContactUs";
 
 function Home() {
   return (
     <>
-      <div className="home">
-        <div>
+      <div>
+        <Navbar />
+      </div>
+      <div className="intro-page">
+        <div className="intro">
           <span>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
             totam, nemo quis soluta deserunt labore natus aperiam aliquid. Totam
@@ -14,16 +20,14 @@ function Home() {
           </span>
         </div>
       </div>
+      <div className="inspiration-page">
+        <Inspiraton />
+      </div>
+      <div className="contact-page">
+        <ContactUs />
+      </div>
     </>
   );
 }
 
 export default Home;
-
-{
-  /* <div
-        style={{
-          
-        }}
-      ></div> */
-}
