@@ -2,6 +2,7 @@ import "./App.css";
 import Home from "./Home/Home";
 import Navbar from "./Home/Navbar";
 import Inspiraton from "./Home/Inspiraton";
+import ContactUs from "./Home/ContactUs";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         </div>
         <div>
           <Inspiraton />
+        </div>
+        <div>
+          <ContactUs />
         </div>
       </div>
     </>
