@@ -1,4 +1,3 @@
-import bg from "./.././assets/bg.jpg";
 import "./Home.style.css";
 import Navbar from "./Navbar";
 import Inspiraton from "./Inspiraton";
