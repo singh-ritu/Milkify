@@ -1,4 +1,3 @@
-import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import "./contactUs.styles.css";
@@ -9,10 +8,10 @@ function ContactUs() {
   return (
     <>
       <div className="form-heading">
-        <Typography variant="h4" component="div">
+        <Typography variant="h4" component="div" className="heading">
           Get In Touch
         </Typography>
-        <Typography variant="body1" component="div">
+        <Typography variant="body1" component="div" className="heading">
           <p>
             Have a question, suggestion, or just want to say hello? We'd love to
             hear from you!
@@ -32,7 +31,6 @@ function ContactUs() {
                 <TextField
                   variant="standard"
                   label=" Your Name"
-                  id="standard-basic"
                   sx={{
                     paddingRight: "20px",
                     width: "50%",
@@ -48,13 +46,11 @@ function ContactUs() {
               <TextField
                 variant="standard"
                 label=" Your Subject"
-                id="standard-basic"
                 sx={{ padding: "10px" }}
               />
               <TextField
                 variant="standard"
                 label=" Your message"
-                id="standard-basic"
                 placeholder="Write your message here"
                 sx={{ padding: "10px" }}
               />
