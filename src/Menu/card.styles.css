@@ -1,0 +1,25 @@
+.menu-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.menu-card {
+  position: relative;
+  z-index: 11;
+  transition-duration: 500ms;
+  overflow: hidden;
+  box-shadow: 1px 1px 60px 0px black;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 50px 100px;
+  width: 300px;
+}
+
+.menuCard-heading {
+  margin: 20px;
+  text-align: center;
+}
+.menuCard-btn {
+  margin: 20px 0;
+}

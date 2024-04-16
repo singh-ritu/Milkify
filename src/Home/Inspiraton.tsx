@@ -1,12 +1,10 @@
 import React from "react";
 import Card from "@mui/material/Card";
-import Box from "@mui/material/Box";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "./inspiration.styles.css";
-import coffee from "../assets/coffee.jpg";
 import { cardsType, cardsArray } from "./Constants";
 
 function Inspiraton() {
@@ -23,21 +21,6 @@ function Inspiraton() {
               }}
             >
               <React.Fragment>
-                {/* <Box
-              sx={
-                {
-                  backgroundImage: `url(${coffee})`,
-                  backgroundSize: "cover",
-                  height: "100%",
-                }
-              }
-            > */}
-                {/* <Box
-              sx={{
-                backdropFilter: "blur(5px)",
-                backgroundColor: "rgba(255, 255, 255,0.2)",
-              }}
-              > */}
                 <CardContent className="card-content">
                   <Typography variant="h5" component="div">
                     {card.heading}
@@ -57,8 +40,6 @@ function Inspiraton() {
                 <CardActions>
                   <Button size="small">Learn More</Button>
                 </CardActions>
-                {/* </Box> */}
-                {/* </Box> */}
               </React.Fragment>
             </Card>
           </div>

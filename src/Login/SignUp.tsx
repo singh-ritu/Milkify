@@ -1,5 +1,4 @@
 import { TextField, Typography, Button } from "@mui/material";
-import { Link } from "react-router-dom";
 import "./signUp.styles.css";
 
 function SignUp(props: { handleSignUpClose: () => void }) {
