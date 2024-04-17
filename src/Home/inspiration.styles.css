@@ -5,20 +5,10 @@
   cursor: pointer;
   padding: 0 40px;
   border-radius: 16px;
-  color: white;
-
-  background: rgb(237, 240, 218);
-  background: radial-gradient(
-    circle,
-    rgba(237, 240, 218, 1) 0%,
-    rgba(165, 170, 82, 1) 100%
-  );
-  /* background: rgb(237, 240, 218);
-  background: radial-gradient(
-    circle,
-    rgba(237, 240, 218, 1) 0%,
-    rgba(181, 131, 141, 1) 100%
-  ); */
+  color: #a5aa52;
+  box-shadow: 0 0 5px 5px rgba(165, 170, 82, 0.5);
+  background-color: #edf0da;
+  z-index: 100px;
 }
 .inspiration-cards {
   display: flex;
@@ -37,5 +27,5 @@
   margin: 20px;
 }
 .inspirationCard-heading {
-  margin: 40px 0;
+  margin: 20px 0;
 }

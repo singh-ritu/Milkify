@@ -1,7 +1,9 @@
 import { Button, Typography } from "@mui/material";
 import "./intro.styles.css";
+import { useNavigate } from "react-router-dom";
 
 function Intro() {
+  const navigate = useNavigate();
   return (
     <>
       <div className="intro">
@@ -25,6 +27,9 @@ function Intro() {
                 border: "1px solid white",
               }}
               variant="outlined"
+              onClick={() => {
+                navigate("/login");
+              }}
             >
               Get Started
             </Button>

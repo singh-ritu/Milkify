@@ -1,5 +1,6 @@
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Logo from "./Logo";
 import "./inspiration.styles.css";
 import { cardsType, cardsArray } from "./Constants";
 
@@ -11,6 +12,9 @@ function Inspiraton() {
           <div key={card.heading} className="inspirationCard-box">
             <div className="card">
               <div className="card-details">
+                <div>
+                  <Logo image={card.image} />
+                </div>
                 <div className="inspirationCard-heading">
                   <Typography variant="h5" component="div">
                     {card.heading}
@@ -21,7 +25,15 @@ function Inspiraton() {
                 </div>
               </div>
               <div>
-                <Button style={{ color: "white" }}>Learn more</Button>
+                <Button
+                  style={{
+                    color: "#a5aa52",
+                    borderRadius: "8px",
+                    marginBottom: "10px",
+                  }}
+                >
+                  Learn more
+                </Button>
               </div>
             </div>
           </div>
