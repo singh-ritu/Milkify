@@ -1,24 +1,18 @@
 .contact-page {
-  background-color: rgb(163, 149, 94);
+  background: rgb(165, 170, 82);
+  background: radial-gradient(
+    circle,
+    rgba(165, 170, 82, 1) 42%,
+    rgba(237, 240, 218, 1) 96%,
+    rgba(237, 240, 218, 1) 100%
+  );
   padding: 50px;
 }
 .inspiration-page {
   padding: 50px;
+  background-color: #edf0da;
 }
 .intro-page {
   background-color: #edf0da;
-  padding: 100px 40px;
+  padding: 100px 50px 40px;
 }
-/* margin: 100px 40px;
-padding: 20px;
-border-radius: 8px;
-background-image: url("../assets/milk.jpg");
-background-size: cover;
-background-position: center;
-height: 70%;
-width: 100%; */
-
-/* height: 900px;
-display: flex;
-background-color: #edf0da;
-color: rgb(250, 255, 255); */

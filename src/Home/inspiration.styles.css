@@ -3,15 +3,39 @@
   flex-direction: column;
   display: flex;
   cursor: pointer;
+  padding: 0 40px;
+  border-radius: 16px;
+  color: white;
+
+  background: rgb(237, 240, 218);
+  background: radial-gradient(
+    circle,
+    rgba(237, 240, 218, 1) 0%,
+    rgba(165, 170, 82, 1) 100%
+  );
+  /* background: rgb(237, 240, 218);
+  background: radial-gradient(
+    circle,
+    rgba(237, 240, 218, 1) 0%,
+    rgba(181, 131, 141, 1) 100%
+  ); */
 }
 .inspiration-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  text-align: center;
+}
+.card-details {
+  flex: 1;
 }
 .card-content {
-  flex: 1;
-  color: white;
-  background-color: rgb(138, 104, 170);
-  border-radius: 24px;
+  margin: 10px 0;
+}
+.inspirationCard-box {
+  width: 300px;
+  margin: 20px;
+}
+.inspirationCard-heading {
+  margin: 40px 0;
 }

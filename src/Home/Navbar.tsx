@@ -6,9 +6,11 @@ function Navbar() {
   return (
     <>
       <div className="navbar">
-        <Typography variant="h3" component="h2">
-          Milkify
-        </Typography>
+        <div className="navbar-heading">
+          <Typography variant="h3" component="h2">
+            Milkify
+          </Typography>
+        </div>
         <div className="nav-btns">
           <Button variant="text" style={{ color: "white" }}>
             Milk Shop

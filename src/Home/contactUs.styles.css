@@ -1,26 +1,41 @@
-.form-heading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+.contactUs-heading {
   color: white;
   padding: 50px;
+  margin-bottom: 30px;
+  text-align: center;
 }
 .form-container {
-  padding: 100px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 50px;
+  text-align: center;
   border-radius: 16px;
   background-color: white;
-  margin: 10px 100px;
+  cursor: pointer;
+}
+.form {
+  display: flex;
+  align-items: center;
+}
+.form-heading {
+  margin-bottom: 50px;
+  color: #a5aa52;
 }
 .form-details {
+  width: 650px;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.form-inputs {
   display: flex;
   flex-direction: column;
-  margin-bottom: 10px;
+  margin: 20px;
 }
-.heading {
-  text-align: center;
+
+.form-img {
+  height: 500px;
+  width: 100vh;
+  background-image: url("./../assets/contact.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
 }

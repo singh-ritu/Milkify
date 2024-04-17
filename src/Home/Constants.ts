@@ -1,34 +1,27 @@
 export type cardsType = {
   heading: string;
   content: string;
-  message: string;
 };
 
 export let cardsArray: Array<cardsType> = [
   {
-    heading: "Rise and Shine",
+    heading: "Diverse Selection",
     content:
-      "At Milkify, we believe in starting your day with a burst of energy and vitality. Our farm-fresh milk, sourced from local dairy farms, is packed with essential nutrients to kickstart your morning routine. From creamy lattes to protein-packed smoothies, let our milk be the foundation of your daily rituals. Elevate your mornings with  Milkify ",
-    message:
-      " Start your day right. Fuel your mornings with the goodness of Milkify milk.",
+      "Explore a wide array of dairy options, including both vegan and non-vegan milk varieties, catering to different dietary preferences and lifestyles",
   },
   {
-    heading: " Refresh & Revitalize",
+    heading: " Quality Assurance",
     content:
-      "Need a midday pick-me-up? Look no further than Milkify. Our milk offers a refreshing escape from the hustle and bustle of daily life. Whether enjoyed on its own or blended into your favorite beverage, our milk promises a moment of pure indulgence. Take a break, refresh, and revitalize with Milkify.",
-    message: "Pause, refresh, and savor the moment with Milkify.",
+      " Rest assured of the highest quality standards in every product, sourced from trusted suppliers and farms, ensuring freshness, purity, and nutritional value.",
   },
   {
-    heading: " Family Moments",
+    heading: " Health and Wellness",
     content:
-      "At Milkify, we understand the importance of family and cherished moments shared together. Our milk brings families closer, providing a source of nourishment and joy for every generation. From shared meals to cozy evenings by the fire, let our milk be the thread that binds your family's memories. Celebrate togetherness with Milkify.",
-    message:
-      "Create lasting memories. Share the goodness of Milkify milk with your loved ones.",
+      " Prioritize your well-being with our range of milk products, rich in essential nutrients such as calcium, vitamin D, and protein, supporting a balanced and healthy lifestyle. ",
   },
   {
-    heading: "Evening Comfort",
+    heading: "Health and Wellness",
     content:
-      "As the day winds down, find comfort and solace in the simple pleasures of life. Our milk offers a moment of tranquility and warmth, soothing both body and soul. Whether enjoyed as a bedtime treat or a calming cup of cocoa, let our milk wrap you in a blanket of coziness. Embrace the quiet moments with Milkify.",
-    message: "Unwind, relax, and embrace the serenity with Milkify milk.",
+      " Join us in our commitment to sustainability and environmental stewardship, with eco-friendly packaging options and responsible sourcing practices aimed at minimizing our ecological footprint.",
   },
 ];
