@@ -4,7 +4,7 @@ import "./signUp.styles.css";
 function SignUp(props: { handleSignUpClose: () => void }) {
   return (
     <>
-      <div className="signUp-container">
+      <div className="signUp-box">
         <div className="signUp-heading">
           <Typography variant="h3" component="div">
             Sign Up

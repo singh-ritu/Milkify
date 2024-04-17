@@ -1,6 +1,14 @@
-.signUp-container {
-  margin: 100px 500px;
+.signUp-box {
+  padding: 100px 500px;
   width: 500px;
+  background: rgb(165, 170, 82);
+  background: radial-gradient(
+    circle,
+    rgba(165, 170, 82, 1) 28%,
+    rgba(173, 178, 98, 1) 53%,
+    rgba(237, 240, 218, 1) 100%
+  );
+  color: white;
 }
 
 .signUp-heading {

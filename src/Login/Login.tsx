@@ -29,14 +29,16 @@ function Login(props: { onClick: () => void }) {
               >
                 met before right ?
               </Typography>
-              <div className="steper"></div>
+              <div style={{ marginTop: "10px" }}>
+                <b>Then you should try us!</b>
+              </div>
             </div>
-            <p style={{ margin: 0 }}>Then you should try us!</p>
             <div className="caption">
               <Typography variant="caption" component="div">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Facilis laboriosam architecto doloribus voluptatibus temporibus
-                soluta et, doloremque sapiente voluptatum nesciunt.
+                "Welcome to our milk family! Your journey to nutritious goodness
+                begins here. Sign up today and unlock a world of dairy delights
+                tailored just for you. From farm-fresh to innovative plant-based
+                alternatives, we're here to delight your taste buds!"
               </Typography>
             </div>
             <Button
@@ -44,6 +46,8 @@ function Login(props: { onClick: () => void }) {
               style={{
                 borderRadius: "24px",
                 width: "60%",
+                border: "1px solid #a5aa52 ",
+                color: "#a5aa52",
               }}
               onClick={props.onClick}
             >
@@ -94,6 +98,8 @@ function Login(props: { onClick: () => void }) {
                   style={{
                     borderRadius: "24px",
                     width: "100%",
+                    backgroundColor: "#edf0da",
+                    color: "#a5aa52",
                   }}
                 >
                   SIGN IN

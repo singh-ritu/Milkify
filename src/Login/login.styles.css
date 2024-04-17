@@ -1,12 +1,12 @@
 .login-box {
-  margin: 100px 300px;
-  border: 1px solid black;
+  margin: 0;
+  padding: 100px 200px;
   display: flex;
 }
 .heading,
 .sign-in-heading {
   text-align: center;
-  margin: 45px 20px;
+  margin: 45px 0 20px;
   padding: 8px;
 }
 .left-container {
@@ -15,22 +15,26 @@
   align-items: center;
   flex-direction: column;
   padding: 50px 20px;
-  /* border: 1px solid black; */
-  max-width: 400px;
+  color: #a5aa52;
+  max-width: 500px;
   height: 100%;
 }
 .caption {
-  margin: 50px 20px;
+  margin: 45px 20px;
   text-align: center;
 }
-.steper {
-  border: 2px solid yellowgreen;
-  border-radius: 2px;
-  width: 50px;
-  margin: 5px 120px;
-}
+
 .right-container {
   padding: 50px;
+  color: white;
+  background: rgb(237, 240, 218);
+  background: linear-gradient(
+    90deg,
+    rgba(237, 240, 218, 1) 0%,
+    rgba(237, 240, 218, 1) 6%,
+    rgba(165, 170, 82, 1) 46%
+  );
+  border-radius: 16px;
 }
 .sign-in-footer {
   display: flex;

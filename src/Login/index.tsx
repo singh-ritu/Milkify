@@ -1,5 +1,6 @@
 import Login from "./Login";
 import SignUp from "./SignUp";
+import "./registration.styles.css";
 import { useState, useEffect } from "react";
 
 function Registration() {
@@ -20,7 +21,9 @@ function Registration() {
         {isSignUpClicked ? (
           <SignUp handleSignUpClose={handleSignUpClose} />
         ) : (
-          <Login onClick={handleSignUpClick} />
+          <div className="login">
+            <Login onClick={handleSignUpClick} />
+          </div>
         )}
       </div>
     </>
