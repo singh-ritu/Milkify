@@ -1,20 +1,25 @@
 .signUp-box {
-  padding: 100px 500px;
-  width: 500px;
-  background: rgb(165, 170, 82);
-  background: radial-gradient(
-    circle,
-    rgba(165, 170, 82, 1) 28%,
-    rgba(173, 178, 98, 1) 53%,
-    rgba(237, 240, 218, 1) 100%
+  padding: 40px;
+  border-radius: 16px;
+  background: rgb(237, 240, 218);
+  background: linear-gradient(
+    90deg,
+    rgba(237, 240, 218, 1) 0%,
+    rgba(165, 170, 82, 1) 42%
   );
   color: white;
+  margin-left: 100px;
+  width: 500px;
 }
-
+.signUp-container {
+  padding: 50px 500px;
+}
 .signUp-heading {
   text-align: center;
+}
+.signUp-inputs {
   margin: 20px 0;
 }
-.inputs {
-  margin: 20px 0;
+.signUp-footer {
+  text-align: center;
 }

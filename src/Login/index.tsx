@@ -19,7 +19,9 @@ function Registration() {
     <>
       <div>
         {isSignUpClicked ? (
-          <SignUp handleSignUpClose={handleSignUpClose} />
+          <div className="signUp">
+            <SignUp handleSignUpClose={handleSignUpClose} />
+          </div>
         ) : (
           <div className="login">
             <Login onClick={handleSignUpClick} />
