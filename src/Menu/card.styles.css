@@ -1,24 +1,30 @@
-.menu-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+.menu {
+  background-color: white;
+  box-shadow: 1px 1px 20px 0px #a5aa52;
+  border-radius: 16px;
+  margin: 20px;
 }
-
 .menu-card {
-  position: relative;
-  z-index: 11;
-  transition-duration: 500ms;
-  overflow: hidden;
-  box-shadow: 1px 1px 60px 0px black;
+  display: flex;
+}
+.menu-details {
+  color: #a5aa52;
   border-radius: 20px;
   padding: 20px;
-  margin: 50px 100px;
   width: 300px;
 }
-
+.menuCard-logo {
+  text-align: center;
+}
+.bg-img {
+  width: 400px;
+  height: 450px;
+  padding: 10px;
+}
 .menuCard-heading {
   margin: 20px;
   text-align: center;
+  color: white;
 }
 .menuCard-btn {
   margin: 20px 0;
