@@ -53,7 +53,7 @@ function SignUp(props: { handleSignUpClose: () => void }) {
                 color: "#a5aa52",
               }}
             >
-              <b>SIGN UP</b>
+              SIGN UP
             </Button>
             <div
               style={{
@@ -76,17 +76,16 @@ function SignUp(props: { handleSignUpClose: () => void }) {
               </div>
             </div>
             <Button
-              variant="outlined"
+              variant="contained"
               style={{
                 borderRadius: "24px",
-                width: "100%",
                 margin: "30px 0",
-                color: "#a5aa52",
-                border: "1px solid #edf0da",
+                width: "100%",
                 backgroundColor: "#edf0da",
+                color: "#a5aa52",
               }}
             >
-              <b>Sign up with Google</b>
+              Sign up with Google
             </Button>
             <div className="signUp-footer">
               <div>
