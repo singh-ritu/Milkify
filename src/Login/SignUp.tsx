@@ -15,7 +15,10 @@ function SignUp(props: { handleSignUpClose: () => void }) {
               <Typography variant="h3" component="div">
                 Sign Up
               </Typography>
-              <b>Let's get Started with your 30 days Trial!</b>
+              <b>
+                "Milk the moment with us! Sign up and savor the richness of
+                dairy in every drop."
+              </b>
             </div>
             <div className="signUp-inputs">
               <TextField
@@ -71,28 +74,7 @@ function SignUp(props: { handleSignUpClose: () => void }) {
                 }}
                 onClick={props.handleSignUpClose}
               >
-                {" "}
-                Log in{" "}
-              </div>
-            </div>
-            <Button
-              variant="contained"
-              style={{
-                borderRadius: "24px",
-                margin: "30px 0",
-                width: "100%",
-                backgroundColor: "#edf0da",
-                color: "#a5aa52",
-              }}
-            >
-              Sign up with Google
-            </Button>
-            <div className="signUp-footer">
-              <div>
-                <span>By Signing Up to create an account I accept</span>
-              </div>
-              <div>
-                <span>Company's Terms of use and Privacy Policies</span>
+                Log in
               </div>
             </div>
           </div>

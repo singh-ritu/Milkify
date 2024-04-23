@@ -1,5 +1,4 @@
 .signUp-box {
-  padding: 40px;
   border-radius: 16px;
   display: flex;
   align-items: center;
@@ -20,6 +19,7 @@
 }
 .signUp-details {
   width: 500px;
+  padding: 20px;
 }
 .signUp-inputs {
   margin: 20px 0;
@@ -28,5 +28,5 @@
   text-align: center;
 }
 .signUp-img {
-  width: 500px;
+  width: 400px;
 }
