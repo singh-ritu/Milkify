@@ -1,5 +1,6 @@
 import { Button, Typography } from "@mui/material";
 import { itemsArray, itemsType } from "./MenuItems";
+import "./menu.styles.css";
 
 function Menu() {
   return (
@@ -8,9 +9,9 @@ function Menu() {
         <div className="menu-items">
           {itemsArray.map((item: itemsType) => (
             <div className="item-box">
-              <div>
+              {/* <div>
                 <img src={item.image} className="item-img" />
-              </div>
+              </div> */}
               <div className="item-details">
                 <div className="item-name">
                   <Typography variant="h4" component="div">

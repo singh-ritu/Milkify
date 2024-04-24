@@ -1,11 +1,4 @@
 .menu {
   background-color: #edf0da;
-  /* background: rgb(165, 170, 82);
-  background: radial-gradient(
-    circle,
-    rgba(165, 170, 82, 1) 42%,
-    rgba(237, 240, 218, 1) 96%,
-    rgba(237, 240, 218, 1) 100%
-  ); */
-  height: 100vh;
+  height: 100%;
 }

@@ -1,0 +1,25 @@
+.menu-items {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.menu-container {
+  padding: 100px;
+}
+.item-box {
+  width: 400px;
+  height: 400px;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+/* .item-img {
+  width: 500px;
+  height: 300px;
+  background-size: cover;
+} */
