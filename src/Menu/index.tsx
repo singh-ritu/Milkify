@@ -1,10 +1,11 @@
-import Navbar from "../Home/Navbar";
-
+import Menu from "./Menu";
 import "./items.styles.css";
 function Items() {
   return (
     <>
-      <div className="menu"></div>
+      <div className="menu">
+        <Menu />
+      </div>
       <div className="menu-cart"></div>
     </>
   );
