@@ -5,6 +5,7 @@ function Items() {
   return (
     <>
       <div className="menu"></div>
+      <div className="menu-cart"></div>
     </>
   );
 }
