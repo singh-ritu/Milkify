@@ -1,0 +1,26 @@
+.menu-navbar {
+  width: 100%;
+  color: #a5aa52;
+  background-color: #edf0da;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  backdrop-filter: blur(30px);
+  padding: 10px;
+  margin: 0;
+  position: fixed;
+}
+
+.menu-navbar-heading {
+  margin-left: 20px;
+}
+.navbar-input {
+  margin: 20px;
+}
+.input {
+  width: 100%;
+  padding: 8px 64px;
+  border-radius: 16px;
+  border: none;
+}
