@@ -9,9 +9,14 @@ function Menu() {
         <div className="menu-items">
           {itemsArray.map((item: itemsType) => (
             <div className="item-box">
-              {/* <div>
-                <img src={item.image} className="item-img" />
-              </div> */}
+              <div className="itemImg-container">
+                <div
+                  className="item-img"
+                  style={{
+                    backgroundImage: `url(${item.image})`,
+                  }}
+                ></div>
+              </div>
               <div className="item-details">
                 <div className="item-name">
                   <Typography variant="h4" component="div">
