@@ -12,6 +12,8 @@ function Menu() {
           <MenuNavbar />
         </div>
         <div className="menu-items">
+          <div className="milk-category"></div>
+
           {itemsArray.map((item: itemsType) => (
             <div className="item-box">
               <div className="itemImg-container">
@@ -24,24 +26,34 @@ function Menu() {
               </div>
               <div className="item-details">
                 <div className="item-name">
-                  <Typography variant="h4" component="div">
+                  <Typography variant="h5" component="div">
                     {item.name}
                   </Typography>
                 </div>
                 <div>
                   <Typography variant="body2" component="div">
-                    {item.details}
+                    " {item.details}"
                   </Typography>
                 </div>
                 <div
                   style={{
                     display: "flex",
                     justifyContent: "space-between",
+                    paddingTop: "10px",
                   }}
                 >
-                  <div>{item.price} </div>
+                  <div>Cost:{item.price} INR/Lt</div>
                   <div>
-                    <Button>Add Item</Button>
+                    <Button
+                      variant="contained"
+                      style={{
+                        borderRadius: "24px",
+                        backgroundColor: "#edf0da",
+                        color: "#a5aa52",
+                      }}
+                    >
+                      Add Item
+                    </Button>
                   </div>
                 </div>
               </div>
