@@ -1,13 +1,15 @@
 .menu-items {
-  max-width: 800px;
+  width: 950px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 100px 0;
+  margin-right: 100px;
 }
 
 .menu-container {
   display: flex;
-  justify-content: space-between;
 }
 .item-box {
   width: 500px;
