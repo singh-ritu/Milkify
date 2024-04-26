@@ -5,9 +5,6 @@ import "./items.styles.css";
 function Items() {
   return (
     <>
-      <div>
-        <MenuNavbar />
-      </div>
       <div className="menu">
         <Menu />
       </div>

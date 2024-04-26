@@ -1,11 +1,16 @@
 import { Button, Typography } from "@mui/material";
 import { itemsArray, itemsType } from "./MenuItems";
+import MenuNavbar from "./MenuNavbar";
 import "./menu.styles.css";
+import Cart from "./Cart";
 
 function Menu() {
   return (
     <>
       <div className="menu-container">
+        <div>
+          <MenuNavbar />
+        </div>
         <div className="menu-items">
           {itemsArray.map((item: itemsType) => (
             <div className="item-box">
@@ -42,6 +47,9 @@ function Menu() {
               </div>
             </div>
           ))}
+        </div>
+        <div className="menu-cart">
+          <Cart />
         </div>
       </div>
     </>
