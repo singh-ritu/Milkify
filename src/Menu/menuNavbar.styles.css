@@ -15,10 +15,12 @@
 }
 .navbar-input {
   margin-left: 80px;
+  width: 100%;
 }
 .input {
   width: 100%;
-  padding: 8px 96px;
+  padding: 8px 0;
+  padding-left: 8px;
   border-radius: 8px;
   border: none;
 }

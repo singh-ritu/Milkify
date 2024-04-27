@@ -8,9 +8,7 @@ function Menu() {
   return (
     <>
       <div className="menu-container">
-        <div>
-          <MenuNavbar />
-        </div>
+        <MenuNavbar />
         <div className="menu-items">
           <div className="milk-category"></div>
 
@@ -38,6 +36,7 @@ function Menu() {
                 <div
                   style={{
                     display: "flex",
+                    alignItems: "center",
                     justifyContent: "space-between",
                     paddingTop: "10px",
                   }}

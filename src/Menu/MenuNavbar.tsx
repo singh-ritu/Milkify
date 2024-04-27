@@ -6,7 +6,7 @@ function MenuNavbar() {
     <>
       <div className="menu-navbar">
         <div className="menu-navbar-heading">
-          <Typography variant="h3" component="h2">
+          <Typography variant="h4" component="h2">
             Milkify
           </Typography>
         </div>
