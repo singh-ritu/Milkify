@@ -1,8 +1,11 @@
 import { TextField, Typography, Button } from "@mui/material";
 import "./signUp.styles.css";
 import photo3 from "./../assets/photo3.jpg";
+import { useNavigate } from "react-router-dom";
 
 function SignUp(props: { handleSignUpClose: () => void }) {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="signUp-container">
@@ -54,6 +57,9 @@ function SignUp(props: { handleSignUpClose: () => void }) {
                 width: "100%",
                 backgroundColor: "#edf0da",
                 color: "#a5aa52",
+              }}
+              onClick={() => {
+                navigate("/menu");
               }}
             >
               SIGN UP

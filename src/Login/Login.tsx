@@ -7,8 +7,10 @@ import {
 } from "@mui/material";
 import "./login.styles.css";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 
 function Login(props: { onClick: () => void }) {
+  const navigate = useNavigate();
   return (
     <>
       <div className="login-container">
@@ -106,6 +108,9 @@ function Login(props: { onClick: () => void }) {
                     width: "100%",
                     backgroundColor: "#edf0da",
                     color: "#a5aa52",
+                  }}
+                  onClick={() => {
+                    navigate("/menu");
                   }}
                 >
                   SIGN IN
