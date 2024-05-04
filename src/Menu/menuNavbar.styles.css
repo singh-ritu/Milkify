@@ -5,14 +5,11 @@
   z-index: 1;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 10px;
-  margin: 0;
-  position: fixed;
+  margin-bottom: 24px;
 }
 
-.menu-navbar-heading {
-  margin-left: 20px;
-}
 .navbar-input {
   margin-left: 80px;
   width: 100%;
@@ -23,4 +20,5 @@
   padding-left: 8px;
   border-radius: 8px;
   border: none;
+  text-align: center;
 }

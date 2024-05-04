@@ -3,14 +3,35 @@ import { itemsArray, itemsType } from "./MenuItems";
 import MenuNavbar from "./MenuNavbar";
 import "./menu.styles.css";
 import Cart from "./Cart";
+import veganMilk from "./../assets/veganMilk.jpg";
 
 function Menu() {
   return (
     <>
       <div className="menu-container">
-        <MenuNavbar />
         <div className="menu-items">
-          <div className="milk-category"></div>
+          <MenuNavbar />
+          <div className="milk-category">
+            <div>
+              <Typography variant="h6" component="div">
+                "Indulge in Nature's Bounty: Savor the Creaminess, Sip the
+                Goodness of Vegan Bliss!"
+              </Typography>
+              <Button
+                variant="contained"
+                style={{
+                  borderRadius: "24px",
+                  backgroundColor: "#edf0da",
+                  color: "#a5aa52",
+                  margin: "16px",
+                }}
+              >
+                Learn more
+              </Button>
+            </div>
+
+            <img src={veganMilk} alt="no-img" className="vegan-img" />
+          </div>
 
           {itemsArray.map((item: itemsType) => (
             <div className="item-box">
