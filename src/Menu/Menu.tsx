@@ -4,8 +4,16 @@ import MenuNavbar from "./MenuNavbar";
 import "./menu.styles.css";
 import Cart from "./Cart";
 import veganMilk from "./../assets/veganMilk.jpg";
+import nonVeganMilk from "./../assets/nonVeganMilk.jpg";
+
+import { useState } from "react";
 
 function Menu() {
+  const [clicked, setIsClicked] = useState(true);
+  const handleClick = () => {
+    if (clicked === true) setIsClicked(false);
+    else setIsClicked(true);
+  };
   return (
     <>
       <div className="menu-container">
@@ -13,10 +21,18 @@ function Menu() {
           <MenuNavbar />
           <div className="milk-category">
             <div>
-              <Typography variant="h6" component="div">
-                "Indulge in Nature's Bounty: Savor the Creaminess, Sip the
-                Goodness of Vegan Bliss!"
-              </Typography>
+              {clicked ? (
+                <Typography>
+                  "Indulge in Nature's Bounty: Savor the Creaminess, Sip the
+                  Goodness of Vegan Bliss!"
+                </Typography>
+              ) : (
+                <Typography>
+                  "Rich, creamy, and utterly satisfying, our non-vegan milk is a
+                  taste of pure indulgence."
+                </Typography>
+              )}
+
               <Button
                 variant="contained"
                 style={{
@@ -25,12 +41,16 @@ function Menu() {
                   color: "#a5aa52",
                   margin: "16px",
                 }}
+                onClick={handleClick}
               >
                 Learn more
               </Button>
             </div>
-
-            <img src={veganMilk} alt="no-img" className="vegan-img" />
+            {clicked ? (
+              <img src={veganMilk} alt="no-img" className="vegan-img" />
+            ) : (
+              <img src={nonVeganMilk} alt="no-img" className="vegan-img" />
+            )}
           </div>
 
           {itemsArray.map((item: itemsType) => (

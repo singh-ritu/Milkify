@@ -3,3 +3,7 @@
   background-color: #fff;
   height: 100%;
 }
+.cart-item {
+  display: flex;
+  align-items: center;
+}
