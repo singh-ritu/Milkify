@@ -5,7 +5,6 @@ import "./menu.styles.css";
 import Cart from "./Cart";
 import veganMilk from "./../assets/veganMilk.jpg";
 import nonVeganMilk from "./../assets/nonVeganMilk.jpg";
-
 import { useState } from "react";
 
 function Menu() {

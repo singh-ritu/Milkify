@@ -1,8 +1,8 @@
-import "./Home.style.css";
-import Navbar from "./Navbar";
-import Inspiraton from "./Inspiraton";
-import ContactUs from "./ContactUs";
-import Intro from "./Intro";
+import "./index.style.css";
+import Navbar from "./components/Navbar";
+import Inspiraton from "./components/inspiration-page";
+import ContactUs from "./components/contact-page";
+import Intro from "./components/intro-page";
 
 function Home() {
   return (

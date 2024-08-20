@@ -1,6 +1,6 @@
-import Login from "./Login";
-import SignUp from "./SignUp";
-import "./registration.styles.css";
+import Login from "./components/login";
+import SignUp from "./components/signup";
+import "./index.styles.css";
 import { useState, useEffect } from "react";
 
 function Registration() {

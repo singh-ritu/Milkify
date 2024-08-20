@@ -1,0 +1,30 @@
+.card {
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  cursor: pointer;
+  padding: 0 40px;
+  border-radius: 16px;
+  color: #a5aa52;
+  box-shadow: 0 0 5px 5px rgba(165, 170, 82, 0.5);
+  background-color: #edf0da;
+}
+.inspiration-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+}
+.card-details {
+  flex: 1;
+}
+.card-content {
+  margin: 10px 0;
+}
+.inspirationCard-box {
+  width: 300px;
+  margin: 20px;
+}
+.inspirationCard-heading {
+  margin: 20px 0;
+}

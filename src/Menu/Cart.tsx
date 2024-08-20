@@ -1,4 +1,4 @@
-import Logo from "../Home/Logo";
+import Logo from "../Home/components/logo";
 import "./cart.styles.css";
 import soy from "./../assets/soy.jpg";
 
@@ -18,7 +18,6 @@ function Cart() {
           >
             <div
               style={{
-                display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
               }}

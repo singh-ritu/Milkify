@@ -1,0 +1,32 @@
+.signUp-box {
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: black;
+  box-shadow: 0 0 5px 5px rgba(165, 170, 82, 0.5);
+}
+.signUp-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.signUp-heading {
+  text-align: center;
+  color: #a5aa52;
+}
+.signUp-details {
+  width: 500px;
+  padding: 20px;
+}
+.signUp-inputs {
+  margin: 20px 0;
+}
+.signUp-footer {
+  text-align: center;
+}
+.signUp-img {
+  width: 400px;
+}

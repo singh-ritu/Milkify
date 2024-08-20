@@ -1,11 +1,11 @@
 .menu-navbar {
   width: 800px;
   color: #a5aa52;
-  background-color: #edf0da;
+  /* background-color: #edf0da; */
   z-index: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   padding: 10px;
   margin-bottom: 24px;
 }
