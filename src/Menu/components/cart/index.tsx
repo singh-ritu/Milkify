@@ -1,6 +1,6 @@
-import Logo from "../Home/components/logo";
+import Logo from "../../../Home/components/logo";
 import "./cart.styles.css";
-import soy from "./../assets/soy.jpg";
+import soy from "../../../assets/soy.jpg";
 
 function Cart() {
   return (

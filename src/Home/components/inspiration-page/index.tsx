@@ -1,6 +1,6 @@
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import Logo from "../logo/index";
+import Logo from "../logo";
 import "./inspiration.styles.css";
 import { cardsType, cardsArray } from "../../Constants";
 
