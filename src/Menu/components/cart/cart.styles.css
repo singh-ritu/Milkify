@@ -1,7 +1,8 @@
 .cart {
-  width: 500px;
   background-color: #fff;
   height: 100%;
+  padding: 10px;
+  text-align: center;
 }
 .cart-item {
   display: flex;

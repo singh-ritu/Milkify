@@ -7,11 +7,11 @@ import {
 } from "@mui/material";
 import "./login.styles.css";
 import Typography from "@mui/material/Typography";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 function Login(props: { onClick: () => void }) {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
@@ -29,6 +29,7 @@ function Login(props: { onClick: () => void }) {
     }
     const user = await fetch("http://localhost:6005/Login", {
       method: "post",
+      credentials: "include",
       headers: {
         "content-type": "application/json",
       },
@@ -39,6 +40,9 @@ function Login(props: { onClick: () => void }) {
     });
     const response = await user.json();
     console.log(response);
+    if (response) {
+      navigate("/menu");
+    }
   };
 
   return (

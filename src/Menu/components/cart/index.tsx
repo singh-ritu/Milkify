@@ -1,36 +1,30 @@
-import Logo from "../../../Home/components/logo";
-import "./cart.styles.css";
-import soy from "../../../assets/soy.jpg";
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
-function Cart() {
-  return (
-    <>
-      <div className="cart">
-        <div className="cart-item">
-          <div>
-            <Logo image={soy} />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <div
-              style={{
-                justifyContent: "space-between",
-                alignItems: "center",
-              }}
-            >
-              <b>Soy Milk</b>
-              <p>200 INR/Lt</p>
-            </div>
-            <div></div>
-          </div>
-        </div>
-      </div>
-    </>
+const Cart: React.FC = () => {
+  const cartItems = useSelector((state: RootState) => state.cart.items);
+  const totalQuantity = useSelector(
+    (state: RootState) => state.cart.totalQuantity
   );
-}
+
+  return (
+    <div>
+      <h2>Your Cart</h2>
+      {cartItems.length === 0 ? (
+        <p>No items in the cart.</p>
+      ) : (
+        <ul>
+          {cartItems.map((item) => (
+            <li key={item.id}>
+              {item.name} - {item.quantity} x INR{item.cost}
+            </li>
+          ))}
+        </ul>
+      )}
+      <p>Total Items: {totalQuantity}</p>
+    </div>
+  );
+};
 
 export default Cart;

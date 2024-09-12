@@ -1,17 +1,54 @@
 import { Button, Typography } from "@mui/material";
-import { itemsArray, itemsType } from "./MenuItems";
 import "./menu-items.styles.css";
 import veganMilk from "../../../assets/veganMilk.jpg";
 import nonVeganMilk from "../../../assets/nonVeganMilk.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MenuNavbar from "../menu-navbar";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../store/cartSlice";
+import { AppDispatch } from "../../../store";
 
+interface MenuItems {
+  _id: string;
+  name: string;
+  category: string;
+  description: string;
+  cost: number;
+}
 function Menu() {
+  const [menuItems, setmenuItems] = useState<MenuItems[]>([]);
   const [clicked, setIsClicked] = useState(true);
+
   const handleClick = () => {
     if (clicked === true) setIsClicked(false);
     else setIsClicked(true);
   };
+
+  const dispatch: AppDispatch = useDispatch();
+
+  const handleAddToCart = (item: MenuItems) => {
+    const cartItem = {
+      id: item._id,
+      name: item.name,
+      cost: item.cost,
+      quantity: 1,
+    };
+    dispatch(addToCart(cartItem));
+  };
+
+  useEffect(() => {
+    fetch("http://localhost:6005/get-milkItems")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Response is not ok");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        setmenuItems(data);
+      });
+  }, []);
+
   return (
     <>
       <div>
@@ -52,16 +89,8 @@ function Menu() {
           )}
         </div>
 
-        {itemsArray.map((item: itemsType) => (
-          <div className="item-box">
-            <div className="itemImg-container">
-              <div
-                className="item-img"
-                style={{
-                  backgroundImage: `url(${item.image})`,
-                }}
-              ></div>
-            </div>
+        {menuItems.map((item) => (
+          <div className="item-box" key={item._id}>
             <div className="item-details">
               <div className="item-name">
                 <Typography variant="h5" component="div">
@@ -70,7 +99,7 @@ function Menu() {
               </div>
               <div>
                 <Typography variant="body2" component="div">
-                  " {item.details}"
+                  " {item.description}"
                 </Typography>
               </div>
               <div
@@ -81,7 +110,7 @@ function Menu() {
                   paddingTop: "10px",
                 }}
               >
-                <div>Cost:{item.price} INR/Lt</div>
+                <div>Cost:{item.cost} INR/Lt</div>
                 <div>
                   <Button
                     variant="contained"
@@ -90,6 +119,7 @@ function Menu() {
                       backgroundColor: "#edf0da",
                       color: "#a5aa52",
                     }}
+                    onClick={() => handleAddToCart(item)}
                   >
                     Add Item
                   </Button>
