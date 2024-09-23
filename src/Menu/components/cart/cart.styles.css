@@ -1,4 +1,4 @@
-.cart {
+/* .cart {
   background-color: #fff;
   height: 100%;
   padding: 10px;
@@ -7,4 +7,138 @@
 .cart-item {
   display: flex;
   align-items: center;
+} */
+
+.cart-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #edf0da;
+  min-height: 100vh;
+}
+
+.cart-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #a5aa52;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.cart-empty {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #324b4b;
+}
+
+.cart-items {
+  margin-bottom: 2rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item-image {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 1rem;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #324b4b;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-price {
+  font-size: 1rem;
+  color: #324b4b;
+  margin-bottom: 0.5rem;
+}
+
+.cart-item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.cart-item-quantity button {
+  background-color: #a5aa52;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+}
+
+.cart-item-quantity span {
+  margin: 0 0.5rem;
+  font-weight: 600;
+}
+
+.cart-item-remove {
+  background-color: transparent;
+  color: #a5aa52;
+  border: 1px solid #a5aa52;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item-remove:hover {
+  background-color: #a5aa52;
+  color: white;
+}
+
+.cart-summary {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cart-summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #324b4b;
+}
+
+.cart-total {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  border-top: 1px solid #a5aa52;
+  padding-top: 1rem;
+}
+
+.cart-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cart-actions button {
+  flex: 1;
+  margin: 0 0.5rem;
 }

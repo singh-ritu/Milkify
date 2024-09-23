@@ -1,28 +1,24 @@
-import { Button, Typography } from "@mui/material";
 import "./menu-items.styles.css";
-import veganMilk from "../../../assets/veganMilk.jpg";
-import nonVeganMilk from "../../../assets/nonVeganMilk.jpg";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import MenuNavbar from "../menu-navbar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../store/cartSlice";
 import { AppDispatch } from "../../../store";
+import { getTotalitems } from "../../../store/cartSlice";
+import Button from "../../../components/Button";
+import { ShoppingCart } from "lucide-react";
 
 interface MenuItems {
   _id: string;
   name: string;
-  category: string;
+  image: string;
+  isVegan: boolean;
   description: string;
   cost: number;
 }
 function Menu() {
   const [menuItems, setmenuItems] = useState<MenuItems[]>([]);
-  const [clicked, setIsClicked] = useState(true);
-
-  const handleClick = () => {
-    if (clicked === true) setIsClicked(false);
-    else setIsClicked(true);
-  };
+  const [visibleItems, setVisibleItems] = useState<MenuItems[]>([]);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -47,87 +43,57 @@ function Menu() {
       .then((data) => {
         setmenuItems(data);
       });
+    const revealItems = () => {
+      const revealed = menuItems.slice(0, visibleItems.length + 1);
+      setVisibleItems(revealed);
+    };
+
+    const timer = setTimeout(revealItems, 200);
+    return () => clearTimeout(timer);
   }, []);
+
+  const totalItems = useSelector(getTotalitems);
 
   return (
     <>
-      <div>
-        <MenuNavbar />
-      </div>
-      <div className="menu-items">
-        <div className="milk-category">
-          <div>
-            {clicked ? (
-              <Typography>
-                "Indulge in Nature's Bounty: Savor the Creaminess, Sip the
-                Goodness of Vegan Bliss!"
-              </Typography>
-            ) : (
-              <Typography>
-                "Rich, creamy, and utterly satisfying, our non-vegan milk is a
-                taste of pure indulgence."
-              </Typography>
-            )}
-
-            <Button
-              variant="contained"
-              style={{
-                borderRadius: "24px",
-                backgroundColor: "#edf0da",
-                color: "#a5aa52",
-                margin: "16px",
-              }}
-              onClick={handleClick}
-            >
-              Learn more
-            </Button>
-          </div>
-          {clicked ? (
-            <img src={veganMilk} alt="no-img" className="vegan-img" />
-          ) : (
-            <img src={nonVeganMilk} alt="no-img" className="vegan-img" />
-          )}
-        </div>
-
-        {menuItems.map((item) => (
-          <div className="item-box" key={item._id}>
-            <div className="item-details">
-              <div className="item-name">
-                <Typography variant="h5" component="div">
-                  {item.name}
-                </Typography>
-              </div>
-              <div>
-                <Typography variant="body2" component="div">
-                  " {item.description}"
-                </Typography>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  paddingTop: "10px",
-                }}
-              >
-                <div>Cost:{item.cost} INR/Lt</div>
-                <div>
-                  <Button
-                    variant="contained"
-                    style={{
-                      borderRadius: "24px",
-                      backgroundColor: "#edf0da",
-                      color: "#a5aa52",
-                    }}
-                    onClick={() => handleAddToCart(item)}
+      <header className="menu-header">
+        <h1 className="menu-title">Milk Store</h1>
+        <Link to="/cart" className="cart-link">
+          <span className="cart-icon" data-count={totalItems}>
+            Cart:
+            <ShoppingCart />
+          </span>
+        </Link>
+      </header>
+      <div className="menu-content">
+        <div className="product-grid">
+          {menuItems.map((item) => (
+            <div key={item._id} className="product-card">
+              <img
+                src={`http://localhost:6005${item.image}`}
+                alt={item.name}
+                className="product-image"
+              />
+              <div className="product-info">
+                <h3 className="product-name">{item.name}</h3>
+                <p className="product-description">{item.description}</p>
+                <div className="product-footer">
+                  <span className="product-price">{item.cost} INR/Lt</span>
+                  <span
+                    className={`product-badge ${
+                      item.isVegan ? "vegan" : "non-vegan"
+                    }`}
                   >
-                    Add Item
-                  </Button>
+                    {item.isVegan ? "Vegan" : "Non-Vegan"}
+                  </span>
                 </div>
+                <Button onClick={() => handleAddToCart(item)} variant="default">
+                  Add to Cart
+                </Button>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </>
   );

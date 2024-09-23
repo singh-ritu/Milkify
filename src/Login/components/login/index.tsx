@@ -1,29 +1,18 @@
-import {
-  Box,
-  Button,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-} from "@mui/material";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
 import "./login.styles.css";
-import Typography from "@mui/material/Typography";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
-function Login(props: { onClick: () => void }) {
+interface LoginProps {} // Empty interface for now (can be extended if needed)
+
+const Login: React.FC<LoginProps> = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-
-  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const loggedInUser = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (!name || !password) {
       console.log("Enter Details");
     }
@@ -46,118 +35,36 @@ function Login(props: { onClick: () => void }) {
   };
 
   return (
-    <>
-      <div className="login-container">
-        <div className="login-box">
-          <div className="left-container">
-            <div className="heading">
-              <Typography
-                variant="h4"
-                component="div"
-                style={{ fontWeight: "bolder" }}
-              >
-                We haven't
-              </Typography>
-              <Typography
-                variant="h4"
-                component="div"
-                style={{ fontWeight: "bolder" }}
-              >
-                met before right ?
-              </Typography>
-              <div style={{ marginTop: "10px" }}>
-                <b>Then you should try us!</b>
-              </div>
-            </div>
-            <div className="caption">
-              <Typography
-                variant="caption"
-                component="div"
-                style={{ fontWeight: "bold" }}
-              >
-                "Welcome to our milk family! Your journey to nutritious goodness
-                begins here. Sign up today and unlock a world of dairy delights
-                tailored just for you. From farm-fresh to innovative plant-based
-                alternatives, we're here to delight your taste buds!"
-              </Typography>
-            </div>
-            <Button
-              variant="outlined"
-              style={{
-                borderRadius: "24px",
-                width: "60%",
-                border: "1px solid #a5aa52 ",
-                color: "#a5aa52",
-              }}
-              onClick={props.onClick}
-            >
-              SIGN UP
-            </Button>
-          </div>
-          <div className="right-container">
-            <div className="sign-in-heading">
-              <Typography
-                variant="h4"
-                component="div"
-                style={{ fontWeight: "bolder" }}
-              >
-                WELCOME HOME!
-              </Typography>
-            </div>
-            <div className="sign-in-form">
-              <Box component="form">
-                <div className="sign-in-form-details">
-                  <TextField
-                    variant="standard"
-                    label="Username"
-                    sx={{ width: "100%", paddingBottom: "10px" }}
-                    InputLabelProps={{
-                      style: { fontSize: "small" },
-                    }}
-                    value={name}
-                    onChange={handleName}
-                  />
-
-                  <TextField
-                    variant="standard"
-                    label="Password"
-                    type="password"
-                    sx={{ width: "100%", paddingBottom: "10px" }}
-                    InputLabelProps={{
-                      style: { fontSize: "small" },
-                    }}
-                    value={password}
-                    onChange={handlePassword}
-                  />
-                </div>
-                <div className="sign-in-footer">
-                  <FormControlLabel
-                    control={<Checkbox defaultChecked size="small" />}
-                    label="Keep Me Signed In"
-                    sx={{ "& .MuiSvgIcon-root": { fontSize: 16 } }}
-                  />
-                  <div>Forgot Password ?</div>
-                </div>
-
-                <Button
-                  variant="contained"
-                  style={{
-                    borderRadius: "24px",
-                    width: "100%",
-                    backgroundColor: "#edf0da",
-                    color: "#a5aa52",
-                  }}
-                  onClick={loggedInUser}
-                >
-                  SIGN IN
-                </Button>
-              </Box>
-            </div>
-          </div>
+    <div className="login-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h2 className="login-title">Welcome Back</h2>
+        <div className="form-group">
+          <label htmlFor="name">Name</label>
+          <Input
+            type="text"
+            placeholder="your name "
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
-      </div>
-    </>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <Input
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <Button type="submit" variant="default" onClick={() => handleSubmit}>
+          Log In
+        </Button>
+        <p className="signup-link">
+          Don't have an account? <Link to="/signup">Sign up</Link>
+        </p>
+      </form>
+    </div>
   );
-}
+};
 
 export default Login;

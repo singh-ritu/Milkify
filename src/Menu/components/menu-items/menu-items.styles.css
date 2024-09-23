@@ -1,49 +1,175 @@
-.milk-category {
+.menu-container {
+  background-color: #edf0da;
+  min-height: 100vh;
+}
+
+.menu-header {
+  background-color: white;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-align: center;
-  border-radius: 16px;
-  padding: 8px;
-  margin: 32px;
-  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.menu-title {
+  font-size: 1.75rem;
+  font-weight: 700;
   color: #a5aa52;
-  box-shadow: 0 0 10px 10px rgba(165, 170, 82, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
-.vegan-img {
-  width: 200px;
-  height: 200px;
+
+.cart-link {
+  text-decoration: none;
+  color: #324b4b;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.cart-icon {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+  position: relative;
+}
+
+.cart-icon::after {
+  content: attr(data-count);
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  background-color: #a5aa52;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 0.1rem 0.4rem;
   border-radius: 50%;
+  transition: all 0.3s ease;
 }
-.menu-items {
-  background-color: #edf0da;
+
+.cart-link:hover {
+  color: #a5aa52;
+  transform: translateY(-2px);
+}
+
+.cart-link:hover .cart-icon::after {
+  transform: scale(1.2);
+}
+
+.menu-content {
+  padding: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
-.item-box {
-  width: 500px;
-  border-radius: 16px;
-  margin: 32px;
-  padding: 8px;
-  background-color: white;
-  box-shadow: 0 0 10px 10px rgba(165, 170, 82, 0.5);
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
-.item-details {
-  padding: 10px;
-}
-.item-img {
+
+.product-image {
   width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  border-radius: 16px;
-}
-.itemImg-container {
-  width: 500px;
   height: 250px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
-.item-name {
-  padding: 10px 0;
+
+.product-card:hover .product-image {
+  transform: scale(1.05);
+}
+
+.product-info {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.product-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #324b4b;
+  margin-bottom: 0.75rem;
+}
+
+.product-description {
+  font-size: 1rem;
+  color: #95b1b0;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.product-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #324b4b;
+}
+
+.product-badge {
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.product-badge.vegan {
+  background-color: #a5aa52;
+  color: white;
+}
+
+.product-badge.non-vegan {
+  background-color: #edf0da;
+  color: #324b4b;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 }

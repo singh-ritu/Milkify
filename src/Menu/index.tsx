@@ -1,17 +1,13 @@
 import Menu from "./components/menu-items";
-import Cart from "./components/cart";
 import "./index.styles.css";
 
 function Items() {
   return (
     <>
       <div>
-        <div style={{ display: "flex" }}>
-          <div className="menu">
+        <div>
+          <div>
             <Menu />
-          </div>
-          <div className="cart">
-            <Cart />
           </div>
         </div>
       </div>

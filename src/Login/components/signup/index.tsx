@@ -1,26 +1,18 @@
-import { TextField, Typography, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import Button from "../../../components/Button";
+import Input from "../../../components/Input";
 import "./signUp.styles.css";
-import photo3 from "../../../assets/photo3.jpg";
-import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 
-function SignUp(props: { handleSignUpClose: () => void }) {
-  // const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+interface SignupProps {} // Empty interface for now (can be extended if needed)
 
-  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
+const SignUp: React.FC<SignupProps> = () => {
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleSignUp = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     if (!name || !email || !password) {
       return console.log("Details are Mandatory");
     }
@@ -44,92 +36,47 @@ function SignUp(props: { handleSignUpClose: () => void }) {
       console.log("signUp:", err);
     }
   };
+
   return (
-    <>
-      <div className="signUp-container">
-        <div className="signUp-box">
-          <div>
-            <img src={photo3} className="signUp-img" />
-          </div>
-          <div className="signUp-details">
-            <div className="signUp-heading">
-              <Typography variant="h3" component="div">
-                Sign Up
-              </Typography>
-              <b>
-                "Milk the moment with us! Sign up and savor the richness of
-                dairy in every drop."
-              </b>
-            </div>
-            <div className="signUp-inputs">
-              <TextField
-                variant="standard"
-                label="Name"
-                sx={{ width: "100%", padding: "10px" }}
-                InputLabelProps={{
-                  style: { fontSize: "small", color: "black" },
-                }}
-                value={name}
-                onChange={handleName}
-              />
-              <TextField
-                variant="standard"
-                label="Email"
-                sx={{ width: "100%", padding: "10px" }}
-                InputLabelProps={{
-                  style: { fontSize: "small", color: "black" },
-                }}
-                value={email}
-                onChange={handleEmail}
-              />
-              <TextField
-                variant="standard"
-                label="password"
-                type="password"
-                sx={{ width: "100%", padding: "10px" }}
-                InputLabelProps={{
-                  style: { fontSize: "small", color: "black" },
-                }}
-                value={password}
-                onChange={handlePassword}
-              />
-            </div>
-            <Button
-              variant="contained"
-              style={{
-                borderRadius: "24px",
-                width: "100%",
-                backgroundColor: "#edf0da",
-                color: "#a5aa52",
-              }}
-              onClick={handleSignUp}
-            >
-              SIGN UP
-            </Button>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                margin: "8px",
-              }}
-            >
-              <span>Already have an account?</span>
-              <div
-                style={{
-                  color: "#1976D2",
-                  marginLeft: "4px",
-                  cursor: "pointer",
-                }}
-                onClick={props.handleSignUpClose}
-              >
-                Log in
-              </div>
-            </div>
-          </div>
+    <div className="signup-container">
+      <form className="signup-form" onSubmit={handleSubmit}>
+        <h2 className="signup-title">Create an Account</h2>
+        <div className="form-group">
+          <label htmlFor="name">Full Name</label>
+          <Input
+            type="text"
+            placeholder="John Doe"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
-      </div>
-    </>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <Input
+            type="email"
+            placeholder="you@example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <Input
+            type="password"
+            placeholder="••••••••"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <Button type="submit" variant="default">
+          Sign Up
+        </Button>
+        <p className="login-link">
+          Already have an account? <Link to="/login">Log in</Link>
+        </p>
+      </form>
+    </div>
   );
-}
+};
 
 export default SignUp;

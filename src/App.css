@@ -1,3 +1,17 @@
 * {
   margin: 0;
 }
+:root {
+  --color-primary: #a5aa52;
+  --color-primary-hover: #8a8f44;
+  --color-secondary: #edf0da;
+  --color-text: #324b4b;
+  --color-muted: #95b1b0;
+  --color-white: #ffffff;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}

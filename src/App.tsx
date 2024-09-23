@@ -6,6 +6,8 @@ import { RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import { createBrowserRouter } from "react-router-dom";
+import SignUp from "./Login/components/signup";
+import Cart from "./Menu/components/cart";
 
 // Define your routes using `createBrowserRouter`
 const router = createBrowserRouter([
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
   {
     path: "/menu",
     element: <Items />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/cart",
+    element: <Cart />,
   },
 ]);
 
