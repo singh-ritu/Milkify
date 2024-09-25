@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../components/Button";
-import Input from "../../../components/Input";
+// import Input from "../../../components/Input";
+import { Lock, Mail, User, Coffee, Milk } from "lucide-react";
 import "./signUp.styles.css";
 
 interface SignupProps {} // Empty interface for now (can be extended if needed)
@@ -38,42 +39,58 @@ const SignUp: React.FC<SignupProps> = () => {
   };
 
   return (
-    <div className="signup-container">
-      <form className="signup-form" onSubmit={handleSubmit}>
-        <h2 className="signup-title">Create an Account</h2>
+    <div className="auth-container">
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <h2 className="auth-title">Create an Account</h2>
         <div className="form-group">
           <label htmlFor="name">Full Name</label>
-          <Input
-            type="text"
-            placeholder="John Doe"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <div className="input-wrapper">
+            <User className="input-icon" />
+            <input
+              type="text"
+              id="name"
+              placeholder="John Doe"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="email">Email</label>
-          <Input
-            type="email"
-            placeholder="you@example.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <div className="input-wrapper">
+            <Mail className="input-icon" />
+            <input
+              type="email"
+              id="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <Input
-            type="password"
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="input-wrapper">
+            <Lock className="input-icon" />
+            <input
+              type="password"
+              id="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
         </div>
         <Button type="submit" variant="default">
           Sign Up
         </Button>
-        <p className="login-link">
+        <p className="auth-link">
           Already have an account? <Link to="/login">Log in</Link>
         </p>
+        <div className="auth-decoration">
+          <Coffee className="icon coffee" />
+          <Milk className="icon milk" />
+        </div>
       </form>
     </div>
   );

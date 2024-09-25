@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../components/Button";
-import Input from "../../../components/Input";
+import { Coffee, Milk, Mail, Lock } from "lucide-react";
+import { login } from "../../../store/userSlice";
+import { useDispatch } from "react-redux";
+
 import "./login.styles.css";
 
-interface LoginProps {} // Empty interface for now (can be extended if needed)
+interface LoginProps {}
 
 const Login: React.FC<LoginProps> = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name || !password) {
+    if (!email || !password) {
       console.log("Enter Details");
     }
     const user = await fetch("http://localhost:6005/Login", {
@@ -23,45 +27,59 @@ const Login: React.FC<LoginProps> = () => {
         "content-type": "application/json",
       },
       body: JSON.stringify({
-        name,
+        email,
         password,
       }),
     });
     const response = await user.json();
     console.log(response);
+    const username = response.user.name;
+    console.log(username);
     if (response) {
+      dispatch(login({ username }));
       navigate("/menu");
     }
   };
 
   return (
-    <div className="login-container">
-      <form className="login-form" onSubmit={handleSubmit}>
-        <h2 className="login-title">Welcome Back</h2>
+    <div className="auth-container">
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <h2 className="auth-title">Welcome Back</h2>
         <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <Input
-            type="text"
-            placeholder="your name "
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+          <label htmlFor="email">Email</label>
+          <div className="input-wrapper">
+            <Mail className="input-icon" />
+            <input
+              type="email"
+              placeholder="you@example.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
         </div>
         <div className="form-group">
           <label htmlFor="password">Password</label>
-          <Input
-            type="password"
-            placeholder="••••••••"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
+          <div className="input-wrapper">
+            <Lock className="input-icon" />
+            <input
+              type="password"
+              id="password"
+              placeholder="••••••••"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
         </div>
-        <Button type="submit" variant="default" onClick={() => handleSubmit}>
+        <Button type="submit" variant="default">
           Log In
         </Button>
-        <p className="signup-link">
+        <p className="auth-link">
           Don't have an account? <Link to="/signup">Sign up</Link>
         </p>
+        <div className="auth-decoration">
+          <Coffee className="icon coffee" />
+          <Milk className="icon milk" />
+        </div>
       </form>
     </div>
   );

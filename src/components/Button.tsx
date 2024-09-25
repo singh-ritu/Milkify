@@ -15,10 +15,12 @@ type ButtonProps = {
     | "info";
   size?: "small" | "medium" | "large";
   type?: "button" | "submit" | "reset";
+  className?: string;
 };
 
 const Button: React.FC<ButtonProps> = ({
   children,
+  className,
   onClick,
   variant = "default",
   size = "medium",
@@ -26,7 +28,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`button ${variant} ${size}`}
+      className={`button ${variant} ${size} ${className}`}
       onClick={onClick}
       type={type}
     >

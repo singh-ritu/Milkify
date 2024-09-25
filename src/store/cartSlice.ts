@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-
 interface CartItem {
   id: string;
+  image: string;
   name: string;
   cost: number;
   quantity: number;
@@ -10,11 +10,13 @@ interface CartItem {
 interface CartState {
   items: CartItem[];
   totalQuantity: number;
+  totalPrice: number;
 }
 
 const initialState: CartState = {
   items: [],
   totalQuantity: 0,
+  totalPrice: 0,
 };
 
 const cartSlice = createSlice({
@@ -58,6 +60,12 @@ const cartSlice = createSlice({
         state.totalQuantity -= 1;
       }
     },
+    totalOrderPrice: (state) => {
+      const totalOrderPrice = state.items.reduce((acc, current) => {
+        return acc + current.cost * current.quantity;
+      }, 0);
+      state.totalPrice = totalOrderPrice;
+    },
   },
   selectors: {
     getTotalQuantity: (state) => {
@@ -74,6 +82,7 @@ export const {
   removeFromCart,
   quantityDecrement,
   quantityIncrement,
+  totalOrderPrice,
 } = cartSlice.actions;
 
 export const { getTotalQuantity, getTotalitems } = cartSlice.selectors;
