@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../components/Button";
 // import Input from "../../../components/Input";
-import { Lock, Mail, User, Coffee, Milk } from "lucide-react";
+import { Lock, Mail, User, Coffee, Milk, AlertCircle } from "lucide-react";
 import "./signUp.styles.css";
 
 interface SignupProps {} // Empty interface for now (can be extended if needed)
@@ -11,13 +11,15 @@ const SignUp: React.FC<SignupProps> = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name || !email || !password) {
-      return console.log("Details are Mandatory");
+    if (!email || !password || name) {
+      console.log("Enter Details");
+      setError("Details are Mandatory");
+      return;
     }
-    console.log("clicked");
 
     try {
       const user = await fetch("http://localhost:6005/SignUp", {
@@ -42,6 +44,12 @@ const SignUp: React.FC<SignupProps> = () => {
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit}>
         <h2 className="auth-title">Create an Account</h2>
+        {error && (
+          <div className="login-alert">
+            <AlertCircle size={20} />
+            <span>{error}</span>
+          </div>
+        )}
         <div className="form-group">
           <label htmlFor="name">Full Name</label>
           <div className="input-wrapper">

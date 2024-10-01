@@ -8,6 +8,7 @@ import store from "./store";
 import { createBrowserRouter } from "react-router-dom";
 import SignUp from "./Login/components/signup";
 import Cart from "./Menu/components/cart";
+import OrderSummary from "./Order/components/orderSummary";
 
 // Define your routes using `createBrowserRouter`
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "/cart",
     element: <Cart />,
+  },
+  {
+    path: "/order/:orderId",
+    element: <OrderSummary />,
   },
 ]);
 

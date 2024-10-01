@@ -49,6 +49,21 @@
   color: #324b4b;
 }
 
+.login-alert {
+  display: flex;
+  align-items: center;
+  background-color: #fef2f2;
+  border: 1px solid #f87171;
+  color: #dc2626;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.login-alert svg {
+  margin-right: 0.5rem;
+}
+
 .input-wrapper {
   position: relative;
   display: flex;

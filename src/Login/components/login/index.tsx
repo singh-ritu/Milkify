@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../components/Button";
-import { Coffee, Milk, Mail, Lock } from "lucide-react";
+import { Coffee, Milk, Mail, Lock, AlertCircle } from "lucide-react";
 import { login } from "../../../store/userSlice";
 import { useDispatch } from "react-redux";
 
@@ -14,30 +14,44 @@ const Login: React.FC<LoginProps> = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!email || !password) {
       console.log("Enter Details");
+      setError("Details are Mandatory");
+      return;
     }
-    const user = await fetch("http://localhost:6005/Login", {
-      method: "post",
-      credentials: "include",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify({
-        email,
-        password,
-      }),
-    });
-    const response = await user.json();
-    console.log(response);
-    const username = response.user.name;
-    console.log(username);
-    if (response) {
+    try {
+      const user = await fetch("http://localhost:6005/Login", {
+        method: "post",
+        credentials: "include",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      });
+      const response = await user.json();
+      console.log(response);
+
+      if (!response.ok) {
+        setError(response.error);
+        return;
+      }
+      const username = response.user.name;
+      console.log(username);
+
       dispatch(login({ username }));
       navigate("/menu");
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.log(err);
+        setError(err.message);
+      }
     }
   };
 
@@ -45,6 +59,13 @@ const Login: React.FC<LoginProps> = () => {
     <div className="auth-container">
       <form className="auth-form" onSubmit={handleSubmit}>
         <h2 className="auth-title">Welcome Back</h2>
+        {error && (
+          <div className="login-alert">
+            <AlertCircle size={20} />
+            <span>{error}</span>
+          </div>
+        )}
+
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <div className="input-wrapper">

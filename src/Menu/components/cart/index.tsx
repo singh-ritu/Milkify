@@ -5,6 +5,7 @@ import { ShoppingBag, Plus, Minus, Trash2, ShoppingCart } from "lucide-react";
 import "./cart.styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import { useNavigate } from "react-router-dom";
 import {
   quantityDecrement,
   removeFromCart,
@@ -19,6 +20,7 @@ function Cart() {
 
   const user = useSelector((state: RootState) => state.user);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const totalQuantity = useSelector(
@@ -42,8 +44,10 @@ function Cart() {
   const handleOrder = async () => {
     try {
       const newArr = cartItems.map((item) => ({
-        id: item.id,
+        milkItemId: item.id,
+        itemName: item.name,
         quantity: item.quantity,
+        itemCost: item.cost,
       }));
 
       const order = await fetch("http://localhost:6005/order", {
@@ -57,7 +61,11 @@ function Cart() {
         }),
       });
       const data = await order.json();
+      const orderId = data._id;
       console.log(data);
+      if (data) {
+        navigate(`/order/${orderId}`);
+      }
     } catch (error) {
       console.log("order", error);
     }
@@ -144,7 +152,7 @@ function Cart() {
           </div>
           <div className="cart-actions">
             <Button variant="default" onClick={handleOrder}>
-              Proceed to Checkout
+              Place Order
             </Button>
             <Link to="/menu">
               <Button variant="outline">Continue Shopping</Button>

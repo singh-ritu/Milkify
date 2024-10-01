@@ -37,7 +37,9 @@ function Menu() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:6005/get-milkItems")
+    fetch("http://localhost:6005/get-milkItems", {
+      credentials: "include",
+    })
       .then((res) => {
         if (!res.ok) {
           throw new Error("Response is not ok");
