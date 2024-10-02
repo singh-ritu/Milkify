@@ -47,11 +47,9 @@ const Login: React.FC<LoginProps> = () => {
 
       dispatch(login({ username }));
       navigate("/menu");
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        console.log(err);
-        setError(err.message);
-      }
+    } catch (err: any) {
+      console.log(err);
+      setError(err.error);
     }
   };
 
