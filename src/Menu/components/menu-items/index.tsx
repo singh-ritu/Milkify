@@ -37,7 +37,7 @@ function Menu() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:6005/get-milkItems", {
+    fetch("https://milkify-backend.onrender.com/get-milkItems", {
       credentials: "include",
     })
       .then((res) => {

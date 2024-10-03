@@ -40,7 +40,7 @@ function OrderSummary() {
   const { orderId } = useParams();
 
   useEffect(() => {
-    fetch(`http://localhost:6005/get-order/${orderId}`, {
+    fetch(`https://milkify-backend.onrender.com/get-order/${orderId}`, {
       credentials: "include",
     })
       .then((res) => {

@@ -24,7 +24,7 @@ const Login: React.FC<LoginProps> = () => {
       return;
     }
     try {
-      const user = await fetch("http://localhost:6005/Login", {
+      const user = await fetch("https://milkify-backend.onrender.com/Login", {
         method: "post",
         credentials: "include",
         headers: {
@@ -36,12 +36,6 @@ const Login: React.FC<LoginProps> = () => {
         }),
       });
       const response = await user.json();
-      console.log(response);
-
-      if (!response.ok) {
-        setError(response.error);
-        return;
-      }
       const username = response.user.name;
       console.log(username);
 

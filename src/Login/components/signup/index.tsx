@@ -15,14 +15,14 @@ const SignUp: React.FC<SignupProps> = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!email || !password || name) {
+    if (!email || !password || !name) {
       console.log("Enter Details");
       setError("Details are Mandatory");
       return;
     }
 
     try {
-      const user = await fetch("http://localhost:6005/SignUp", {
+      const user = await fetch("https://milkify-backend.onrender.com/signUp", {
         method: "post",
         headers: {
           "content-type": "application/json",
