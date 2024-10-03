@@ -107,7 +107,7 @@ function Cart() {
             {cartItems.map((item) => (
               <div key={item.id} className="cart-item">
                 <img
-                  src={`http://localhost:6005${item.image}`}
+                  src={`https://milkify-backend.onrender.com${item.image}`}
                   alt={item.name}
                   className="cart-item-image"
                 />

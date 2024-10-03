@@ -89,7 +89,7 @@ function Menu() {
           {menuItems.map((item) => (
             <div key={item._id} className="product-card">
               <img
-                src={`http://localhost:6005${item.image}`}
+                src={`https://milkify-backend.onrender.com${item.image}`}
                 alt={item.name}
                 className="product-image"
               />
