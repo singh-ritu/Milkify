@@ -23,7 +23,7 @@ const SignUp: React.FC<SignupProps> = () => {
     }
 
     try {
-      const user = await fetch("http://localhost:6005/signUp", {
+      const user = await fetch("https://milkify-backend.onrender.com/signUp", {
         method: "post",
         headers: {
           "content-type": "application/json",

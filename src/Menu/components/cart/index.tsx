@@ -57,7 +57,7 @@ function Cart() {
         itemCost: item.cost,
       }));
 
-      const order = await fetch("http://localhost:6005/order", {
+      const order = await fetch("https://milkify-backend.onrender.com/order", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
