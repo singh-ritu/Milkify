@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../components/Button";
-// import Input from "../../../components/Input";
 import { Lock, Mail, User, Coffee, Milk, AlertCircle } from "lucide-react";
 import "./signUp.styles.css";
 
-interface SignupProps {} // Empty interface for now (can be extended if needed)
+interface SignupProps {}
 
 const SignUp: React.FC<SignupProps> = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,7 +23,7 @@ const SignUp: React.FC<SignupProps> = () => {
     }
 
     try {
-      const user = await fetch("https://milkify-backend.onrender.com/signUp", {
+      const user = await fetch("http://localhost:6005/signUp", {
         method: "post",
         headers: {
           "content-type": "application/json",
@@ -35,6 +36,9 @@ const SignUp: React.FC<SignupProps> = () => {
       });
       const result = await user.json();
       console.log(result);
+      if (result) {
+        navigate("/menu");
+      }
     } catch (err) {
       console.log("signUp:", err);
     }
