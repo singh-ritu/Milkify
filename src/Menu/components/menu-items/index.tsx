@@ -6,7 +6,7 @@ import { addToCart } from "../../../store/cartSlice";
 import { AppDispatch } from "../../../store";
 import { getTotalitems } from "../../../store/cartSlice";
 import Button from "../../../components/Button";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
 import { RootState } from "../../../store";
 
 interface MenuItems {
@@ -37,7 +37,7 @@ function Menu() {
   };
 
   useEffect(() => {
-    fetch("https://milkify-backend.onrender.com/get-milkItems", {
+    fetch("http://localhost:6005/get-milkItems", {
       credentials: "include",
     })
       .then((res) => {
@@ -61,6 +61,8 @@ function Menu() {
   const totalItems = useSelector(getTotalitems);
 
   const getUserInitials = (name: string): string => {
+    console.log(user);
+
     return name
       .split(" ")
       .map((n) => n[0])
@@ -80,7 +82,9 @@ function Menu() {
               <ShoppingCart />
             </span>
           </Link>
-          <div className="user-initials">{getUserInitials(user.name)}</div>
+          <div className="user-initials">
+            {user.name ? getUserInitials(user.name) : <User />}
+          </div>
         </div>
       </header>
       {/* {user.isLoggedIn ? <p>Welcome, {user.name}</p> : <p>Welcome, Guest!</p>} */}

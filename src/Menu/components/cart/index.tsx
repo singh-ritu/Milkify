@@ -1,7 +1,14 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../components/Button";
-import { ShoppingBag, Plus, Minus, Trash2, ShoppingCart } from "lucide-react";
+import {
+  ShoppingBag,
+  Plus,
+  Minus,
+  Trash2,
+  ShoppingCart,
+  User,
+} from "lucide-react";
 import "./cart.styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../store";
@@ -50,7 +57,7 @@ function Cart() {
         itemCost: item.cost,
       }));
 
-      const order = await fetch("https://milkify-backend.onrender.com/order", {
+      const order = await fetch("http://localhost:6005/order", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -87,7 +94,9 @@ function Cart() {
           Your Milk Cart
         </h1>
         <div className="user-profile">
-          <div className="user-initials">{getUserInitials(user.name)}</div>
+          <div className="user-initials">
+            {user.name ? getUserInitials(user.name) : <User />}
+          </div>
         </div>
       </header>
       {cartItems.length === 0 ? (

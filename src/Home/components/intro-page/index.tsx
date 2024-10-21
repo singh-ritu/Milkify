@@ -28,7 +28,7 @@ function Intro() {
               }}
               variant="outlined"
               onClick={() => {
-                navigate("/login");
+                navigate("/menu");
               }}
             >
               Get Started
