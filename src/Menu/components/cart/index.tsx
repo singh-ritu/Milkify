@@ -67,6 +67,14 @@ function Cart() {
           items: newArr,
         }),
       });
+
+      if (!order.ok) {
+        if (order.status === 401) {
+          console.log("unauthorized access no session Id found");
+          navigate(`/login`);
+        }
+        return;
+      }
       const data = await order.json();
       const orderId = data._id;
       console.log(data);
