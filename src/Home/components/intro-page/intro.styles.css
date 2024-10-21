@@ -5,7 +5,7 @@
   color: white;
   padding: 40px 0;
   border-radius: 8px;
-  height: 500px;
+  height: 100vh;
   text-align: center;
 }
 .intro-details {
@@ -13,11 +13,16 @@
   margin-top: 200px;
 }
 .intro-heading {
-  margin: 30px;
+  margin: 60px;
 }
 .intro-stepper {
   border: 2px solid #a5aa52;
   border-radius: 2px;
-  width: 60%;
-  margin-left: 170px;
+  /* width: 60%;
+  margin-left: 170px; */
+}
+@media (max-width: 768px) {
+  .intro-details {
+    margin-right: 0;
+  }
 }

@@ -22,3 +22,12 @@
 .navbar-heading {
   margin-left: 20px;
 }
+@media (max-width: 615px) {
+  .nav-btns {
+    display: none;
+  }
+  .navbar {
+    display: block;
+    text-align: center;
+  }
+}

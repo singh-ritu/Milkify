@@ -1,15 +1,16 @@
-import { Button, Typography } from "@mui/material";
+import { Button, Typography, useMediaQuery } from "@mui/material";
 import "./intro.styles.css";
 import { useNavigate } from "react-router-dom";
 
 function Intro() {
   const navigate = useNavigate();
+  const heading = useMediaQuery("(max-width:566px)");
   return (
     <>
       <div className="intro">
         <div className="intro-details">
           <div className="intro-heading">
-            <Typography variant="h3" component="div">
+            <Typography variant={heading ? "h4" : "h2"} component="div">
               Pure Perfection in Every Pour!
               <div className="intro-stepper"></div>
             </Typography>
