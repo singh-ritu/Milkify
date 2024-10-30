@@ -37,11 +37,7 @@ function Menu() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("https://milkify-one.vercel.app/get-milkItems", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
+    fetch("https://milkify-one.vercel.app/get-milkItems")
       .then((res) => {
         if (!res.ok) {
           throw new Error("Response is not ok");
@@ -64,6 +60,9 @@ function Menu() {
     if (token) {
       fetch("https://milkify-one.vercel.app/userDetails", {
         method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
         .then((res) => {
           // if (!res.ok) {
