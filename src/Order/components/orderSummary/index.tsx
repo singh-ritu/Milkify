@@ -44,7 +44,7 @@ function OrderSummary() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch(`http://localhost:6005/get-order/${orderId}`, {
+    fetch(`https://milkify-one.vercel.app/get-order/${orderId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -63,7 +63,7 @@ function OrderSummary() {
   const handleLogOut = async () => {
     console.log(token);
 
-    const response = await fetch("http://localhost:6005/logOut", {
+    const response = await fetch("https://milkify-one.vercel.app/logOut", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

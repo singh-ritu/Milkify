@@ -23,7 +23,7 @@ const SignUp: React.FC<SignupProps> = () => {
     }
 
     try {
-      const user = await fetch("http://localhost:6005/signUp", {
+      const user = await fetch("https://milkify-one.vercel.app/signUp", {
         method: "post",
         headers: {
           "content-type": "application/json",
@@ -36,6 +36,8 @@ const SignUp: React.FC<SignupProps> = () => {
       });
       const result = await user.json();
       console.log(result);
+      const token = result.message;
+      localStorage.setItem("token", token);
       if (result) {
         navigate("/menu");
       }

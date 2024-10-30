@@ -24,7 +24,7 @@ const Login: React.FC<LoginProps> = () => {
       return;
     }
     try {
-      const user = await fetch("http://localhost:6005/Login", {
+      const user = await fetch("https://milkify-one.vercel.app/Login", {
         method: "post",
         headers: {
           "content-type": "application/json",

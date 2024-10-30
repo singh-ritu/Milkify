@@ -57,7 +57,7 @@ function Cart() {
         itemCost: item.cost,
       }));
 
-      const order = await fetch("http://localhost:6005/order", {
+      const order = await fetch("https://milkify-one.vercel.app/order", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +90,7 @@ function Cart() {
 
   useEffect(() => {
     if (token) {
-      fetch("http://localhost:6005/userDetails", {
+      fetch("https://milkify-one.vercel.app/userDetails", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

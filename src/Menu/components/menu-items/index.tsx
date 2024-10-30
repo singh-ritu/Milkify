@@ -37,7 +37,7 @@ function Menu() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("http://localhost:6005/get-milkItems", {
+    fetch("https://milkify-one.vercel.app/get-milkItems", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -62,7 +62,7 @@ function Menu() {
 
   useEffect(() => {
     if (token) {
-      fetch("http://localhost:6005/userDetails", {
+      fetch("https://milkify-one.vercel.app/userDetails", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
