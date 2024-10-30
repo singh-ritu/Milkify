@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Button from "../../../components/Button";
 import { Lock, Mail, User, Coffee, Milk, AlertCircle } from "lucide-react";
 import "./signUp.styles.css";
+import { BACKEND_URL } from "../../../constants";
 
 interface SignupProps {}
 
@@ -23,7 +24,7 @@ const SignUp: React.FC<SignupProps> = () => {
     }
 
     try {
-      const user = await fetch("https://milkify-one.vercel.app/signUp", {
+      const user = await fetch(`${BACKEND_URL}/signUp`, {
         method: "post",
         headers: {
           "content-type": "application/json",

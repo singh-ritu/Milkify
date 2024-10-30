@@ -7,6 +7,7 @@ import { AppDispatch } from "../../../store";
 import { getTotalitems } from "../../../store/cartSlice";
 import Button from "../../../components/Button";
 import { ShoppingCart, User } from "lucide-react";
+import { BACKEND_URL } from "../../../constants";
 
 interface MenuItems {
   _id: string;
@@ -37,7 +38,7 @@ function Menu() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch("https://milkify-one.vercel.app/get-milkItems")
+    fetch(`${BACKEND_URL}/get-milkItems`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("Response is not ok");
@@ -58,7 +59,7 @@ function Menu() {
 
   useEffect(() => {
     if (token) {
-      fetch("https://milkify-one.vercel.app/userDetails", {
+      fetch(`${BACKEND_URL}/userDetails`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -118,7 +119,7 @@ function Menu() {
           {menuItems.map((item) => (
             <div key={item._id} className="product-card">
               <img
-                src={`https://milkify-backend.onrender.com${item.image}`}
+                src={`${BACKEND_URL + item.image}`}
                 alt={item.name}
                 className="product-image"
               />

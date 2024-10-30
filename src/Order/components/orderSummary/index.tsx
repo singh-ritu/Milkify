@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { CheckCircle, Package } from "lucide-react";
 import Button from "../../../components/Button";
 import "./orderSummary.styles.css";
+import { BACKEND_URL } from "../../../constants";
 
 interface SummaryItem {
   _id: string;
@@ -44,7 +45,7 @@ function OrderSummary() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    fetch(`https://milkify-one.vercel.app/get-order/${orderId}`, {
+    fetch(`${BACKEND_URL}/get-order/${orderId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -63,7 +64,7 @@ function OrderSummary() {
   const handleLogOut = async () => {
     console.log(token);
 
-    const response = await fetch("https://milkify-one.vercel.app/logOut", {
+    const response = await fetch(`${BACKEND_URL}/logOut`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${token}`,

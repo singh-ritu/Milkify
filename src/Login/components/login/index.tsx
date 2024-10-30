@@ -6,6 +6,7 @@ import { login } from "../../../store/userSlice";
 import { useDispatch } from "react-redux";
 
 import "./login.styles.css";
+import { BACKEND_URL } from "../../../constants";
 
 interface LoginProps {}
 
@@ -24,7 +25,7 @@ const Login: React.FC<LoginProps> = () => {
       return;
     }
     try {
-      const user = await fetch("https://milkify-one.vercel.app/Login", {
+      const user = await fetch(`${BACKEND_URL}/Login`, {
         method: "post",
         headers: {
           "content-type": "application/json",

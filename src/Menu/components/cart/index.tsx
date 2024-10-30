@@ -19,6 +19,7 @@ import {
   totalOrderPrice,
 } from "../../../store/cartSlice";
 import { quantityIncrement, clearCart } from "../../../store/cartSlice";
+import { BACKEND_URL } from "../../../constants";
 
 //
 function Cart() {
@@ -57,7 +58,7 @@ function Cart() {
         itemCost: item.cost,
       }));
 
-      const order = await fetch("https://milkify-one.vercel.app/order", {
+      const order = await fetch(`${BACKEND_URL}/order`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",
@@ -90,7 +91,7 @@ function Cart() {
 
   useEffect(() => {
     if (token) {
-      fetch("https://milkify-one.vercel.app/userDetails", {
+      fetch(`${BACKEND_URL}/userDetails`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -149,7 +150,7 @@ function Cart() {
             {cartItems.map((item) => (
               <div key={item.id} className="cart-item">
                 <img
-                  src={`https://milkify-backend.onrender.com${item.image}`}
+                  src={`${BACKEND_URL + item.image}`}
                   alt={item.name}
                   className="cart-item-image"
                 />
