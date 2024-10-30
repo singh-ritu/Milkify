@@ -69,9 +69,9 @@ function Menu() {
         },
       })
         .then((res) => {
-          if (!res.ok) {
-            throw new Error("Response is not ok");
-          }
+          // if (!res.ok) {
+          //   throw new Error("Response is not ok");
+          // }
           return res.json();
         })
         .then((data) => {
