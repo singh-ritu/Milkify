@@ -66,6 +66,11 @@ const cartSlice = createSlice({
       }, 0);
       state.totalPrice = totalOrderPrice;
     },
+    clearCart: (state) => {
+      state.items = [];
+      state.totalPrice = 0;
+      state.totalQuantity = 0;
+    },
   },
   selectors: {
     getTotalQuantity: (state) => {
@@ -83,6 +88,7 @@ export const {
   quantityDecrement,
   quantityIncrement,
   totalOrderPrice,
+  clearCart,
 } = cartSlice.actions;
 
 export const { getTotalQuantity, getTotalitems } = cartSlice.selectors;

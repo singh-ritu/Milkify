@@ -1,5 +1,5 @@
 import "./menu-items.styles.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../store/cartSlice";
@@ -7,7 +7,6 @@ import { AppDispatch } from "../../../store";
 import { getTotalitems } from "../../../store/cartSlice";
 import Button from "../../../components/Button";
 import { ShoppingCart, User } from "lucide-react";
-import { RootState } from "../../../store";
 
 interface MenuItems {
   _id: string;
@@ -20,8 +19,7 @@ interface MenuItems {
 function Menu() {
   const [menuItems, setmenuItems] = useState<MenuItems[]>([]);
   const [visibleItems, setVisibleItems] = useState<MenuItems[]>([]);
-
-  const user = useSelector((state: RootState) => state.user);
+  const [user, setUser] = useState<string>("");
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -35,10 +33,14 @@ function Menu() {
     };
     dispatch(addToCart(cartItem));
   };
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     fetch("http://localhost:6005/get-milkItems", {
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then((res) => {
         if (!res.ok) {
@@ -58,11 +60,38 @@ function Menu() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (token) {
+      fetch("http://localhost:6005/userDetails", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Response is not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setUser(data.name);
+        })
+        .catch((error) => {
+          console.error("Error fetching user details:", error);
+        });
+    }
+  }, [token]);
+
+  const handleUser = () => {
+    if (!token) {
+      navigate("/login");
+    }
+  };
+
   const totalItems = useSelector(getTotalitems);
 
   const getUserInitials = (name: string): string => {
-    console.log(user);
-
     return name
       .split(" ")
       .map((n) => n[0])
@@ -82,8 +111,8 @@ function Menu() {
               <ShoppingCart />
             </span>
           </Link>
-          <div className="user-initials">
-            {user.name ? getUserInitials(user.name) : <User />}
+          <div className="user-initials" onClick={handleUser}>
+            {user ? getUserInitials(user) : <User />}
           </div>
         </div>
       </header>

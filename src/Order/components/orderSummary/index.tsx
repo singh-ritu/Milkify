@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { CheckCircle, Package } from "lucide-react";
 import Button from "../../../components/Button";
 import "./orderSummary.styles.css";
@@ -39,9 +39,15 @@ function OrderSummary() {
 
   const { orderId } = useParams();
 
+  const navigate = useNavigate();
+
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
-    fetch(`https://milkify-backend.onrender.com/get-order/${orderId}`, {
-      credentials: "include",
+    fetch(`http://localhost:6005/get-order/${orderId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     })
       .then((res) => {
         if (!res.ok) {
@@ -52,8 +58,23 @@ function OrderSummary() {
       .then((data) => {
         setOrderDetails(data);
       });
-    console.log(orderDetails);
   }, [orderId]);
+
+  const handleLogOut = async () => {
+    console.log(token);
+
+    const response = await fetch("http://localhost:6005/logOut", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (response.ok) {
+      localStorage.removeItem("token");
+      navigate("/");
+    }
+  };
 
   return (
     <div className="order-summary-container">
@@ -92,6 +113,9 @@ function OrderSummary() {
             <Button variant="default">Continue Shopping</Button>
           </Link>
         </div>
+        <Button variant="default" className="logOut-btn" onClick={handleLogOut}>
+          Log Out
+        </Button>
       </div>
     </div>
   );

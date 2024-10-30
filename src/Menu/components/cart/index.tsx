@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "../../../components/Button";
 import {
@@ -18,14 +18,13 @@ import {
   removeFromCart,
   totalOrderPrice,
 } from "../../../store/cartSlice";
-import { quantityIncrement } from "../../../store/cartSlice";
+import { quantityIncrement, clearCart } from "../../../store/cartSlice";
 
 //
 function Cart() {
   const cartItems = useSelector((state: RootState) => state.cart.items);
   const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
-
-  const user = useSelector((state: RootState) => state.user);
+  const [user, setUser] = useState<string>("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -44,6 +43,7 @@ function Cart() {
     dispatch(removeFromCart(id));
   };
 
+  const token = localStorage.getItem("token");
   useEffect(() => {
     dispatch(totalOrderPrice());
   }, [dispatch]);
@@ -57,10 +57,11 @@ function Cart() {
         itemCost: item.cost,
       }));
 
-      const order = await fetch("https://milkify-backend.onrender.com/order", {
+      const order = await fetch("http://localhost:6005/order", {
         method: "post",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
         },
         credentials: "include",
         body: JSON.stringify({
@@ -75,6 +76,7 @@ function Cart() {
         }
         return;
       }
+      dispatch(clearCart());
       const data = await order.json();
       const orderId = data._id;
       console.log(data);
@@ -85,6 +87,29 @@ function Cart() {
       console.log("order", error);
     }
   };
+
+  useEffect(() => {
+    if (token) {
+      fetch("http://localhost:6005/userDetails", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((res) => {
+          if (!res.ok) {
+            throw new Error("Response is not ok");
+          }
+          return res.json();
+        })
+        .then((data) => {
+          setUser(data.name);
+        })
+        .catch((error) => {
+          console.error("Error fetching user details:", error);
+        });
+    }
+  }, [token]);
 
   const getUserInitials = (name: string): string => {
     return name
@@ -103,7 +128,7 @@ function Cart() {
         </h1>
         <div className="user-profile">
           <div className="user-initials">
-            {user.name ? getUserInitials(user.name) : <User />}
+            {user ? getUserInitials(user) : <User />}
           </div>
         </div>
       </header>
