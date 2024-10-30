@@ -64,9 +64,6 @@ function Menu() {
     if (token) {
       fetch("https://milkify-one.vercel.app/userDetails", {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
       })
         .then((res) => {
           // if (!res.ok) {
