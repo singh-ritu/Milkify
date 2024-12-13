@@ -8,6 +8,7 @@ import { getTotalitems } from "../../../store/cartSlice";
 import Button from "../../../components/Button";
 import { ShoppingCart, User } from "lucide-react";
 import { BACKEND_URL } from "../../../constants";
+import Loader from "../../../components/Loader";
 
 interface MenuItems {
   _id: string;
@@ -21,6 +22,7 @@ function Menu() {
   const [menuItems, setmenuItems] = useState<MenuItems[]>([]);
   const [visibleItems, setVisibleItems] = useState<MenuItems[]>([]);
   const [user, setUser] = useState<string>("");
+  const [isLoading, setLoading] = useState(false);
 
   const dispatch: AppDispatch = useDispatch();
 
@@ -38,6 +40,7 @@ function Menu() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
+    setLoading(true);
     fetch(`${BACKEND_URL}/get-milkItems`)
       .then((res) => {
         if (!res.ok) {
@@ -47,6 +50,7 @@ function Menu() {
       })
       .then((data) => {
         setmenuItems(data);
+        setLoading(false);
       });
     const revealItems = () => {
       const revealed = menuItems.slice(0, visibleItems.length + 1);
@@ -66,9 +70,6 @@ function Menu() {
         },
       })
         .then((res) => {
-          // if (!res.ok) {
-          //   throw new Error("Response is not ok");
-          // }
           return res.json();
         })
         .then((data) => {
@@ -116,32 +117,39 @@ function Menu() {
       {/* {user.isLoggedIn ? <p>Welcome, {user.name}</p> : <p>Welcome, Guest!</p>} */}
       <div className="menu-content">
         <div className="product-grid">
-          {menuItems.map((item) => (
-            <div key={item._id} className="product-card">
-              <img
-                src={`${BACKEND_URL + item.image}`}
-                alt={item.name}
-                className="product-image"
-              />
-              <div className="product-info">
-                <h3 className="product-name">{item.name}</h3>
-                <p className="product-description">{item.description}</p>
-                <div className="product-footer">
-                  <span className="product-price">{item.cost} ₹/Lt</span>
-                  <span
-                    className={`product-badge ${
-                      item.isVegan ? "vegan" : "non-vegan"
-                    }`}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            menuItems.map((item) => (
+              <div key={item._id} className="product-card">
+                <img
+                  src={`${BACKEND_URL + item.image}`}
+                  alt={item.name}
+                  className="product-image"
+                />
+                <div className="product-info">
+                  <h3 className="product-name">{item.name}</h3>
+                  <p className="product-description">{item.description}</p>
+                  <div className="product-footer">
+                    <span className="product-price">{item.cost} ₹/Lt</span>
+                    <span
+                      className={`product-badge ${
+                        item.isVegan ? "vegan" : "non-vegan"
+                      }`}
+                    >
+                      {item.isVegan ? "Vegan" : "Non-Vegan"}
+                    </span>
+                  </div>
+                  <Button
+                    onClick={() => handleAddToCart(item)}
+                    variant="default"
                   >
-                    {item.isVegan ? "Vegan" : "Non-Vegan"}
-                  </span>
+                    Add to Cart
+                  </Button>
                 </div>
-                <Button onClick={() => handleAddToCart(item)} variant="default">
-                  Add to Cart
-                </Button>
               </div>
-            </div>
-          ))}
+            ))
+          )}
         </div>
       </div>
     </>
